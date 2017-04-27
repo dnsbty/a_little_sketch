@@ -1,4 +1,7 @@
 defmodule ALittleSketch.Application do
+  @moduledoc """
+  A module providing supervision for the child processes of the application
+  """
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
