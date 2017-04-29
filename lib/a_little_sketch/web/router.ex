@@ -1,5 +1,6 @@
 defmodule ALittleSketch.Web.Router do
   use ALittleSketch.Web, :router
+  use Plugsnag
 
   pipeline :browser do
     plug :accepts, ["html"]

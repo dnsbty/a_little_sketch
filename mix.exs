@@ -18,7 +18,7 @@ defmodule ALittleSketch.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {ALittleSketch.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: [:logger, :runtime_tools, :bugsnag]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule ALittleSketch.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:credo, "~> 0.7", only: [:dev, :test]},
-     {:dialyxir, "~> 0.5", only: [:dev]}]
+     {:dialyxir, "~> 0.5", only: [:dev]},
+     {:plugsnag, "~> 1.3.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
