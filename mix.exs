@@ -9,7 +9,8 @@ defmodule ALittleSketch.Mixfile do
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     dialyzer: [plt_add_deps: :transitive, ignore_warnings: ".dialyzer.ignore-warnings"]]
   end
 
   # Configuration for the OTP application.
@@ -36,7 +37,8 @@ defmodule ALittleSketch.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:credo, "~> 0.7", only: [:dev, :test]}]
+     {:credo, "~> 0.7", only: [:dev, :test]},
+     {:dialyxir, "~> 0.5", only: [:dev]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
