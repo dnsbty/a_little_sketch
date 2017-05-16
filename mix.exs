@@ -3,7 +3,7 @@ defmodule ALittleSketch.Mixfile do
 
   def project do
     [app: :a_little_sketch,
-     version: "0.0.1",
+     version: "0.0.#{committed_at()}",
      elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -39,7 +39,8 @@ defmodule ALittleSketch.Mixfile do
      {:cowboy, "~> 1.0"},
      {:credo, "~> 0.7", only: [:dev, :test]},
      {:dialyxir, "~> 0.5", only: [:dev]},
-     {:plugsnag, "~> 1.3.0"}]
+     {:plugsnag, "~> 1.3.0"},
+     {:distillery, "~> 1.3"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
@@ -52,5 +53,10 @@ defmodule ALittleSketch.Mixfile do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
      "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+  end
+
+  @doc "Unix timestamp of the last commit."
+  def committed_at do
+    System.cmd("git", ~w[log -1 --date=short --pretty=format:%ct]) |> elem(0)
   end
 end
